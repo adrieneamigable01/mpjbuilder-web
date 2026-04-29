@@ -1,0 +1,51 @@
+$(()=>{
+    var accesskey   = session.key;
+    used_product = {
+        init:()=>{
+            used_product.ajax.getUsedStocks();
+            jsAddon.display.removefullPageLoader()
+        },
+        ajax:{
+            getUsedStocks:()=>{
+                return new Promise((resolve,reject)=>{
+                    jsAddon.display.ajaxRequest({
+                        type:'post',
+                        url:`${getUsedStocksApi}`,
+                        dataType:'json',
+                    }).then((response)=>{
+                        console.log("response",response)
+                           if(!response._isError){
+                            console.log('response.data',response.data)
+                            $.each(response.data,function(k,v){
+                                    $("#used-product-type-table")
+                                    .find("tbody")
+                                    .append(
+                                        $("<tr>")
+                                            .append(
+                                                $("<td>")
+                                                    .text(v.usedStockId),
+                                                $("<td>")
+                                                    .text(v.productType),
+                                                $("<td>")
+                                                    .text(v.storeName),
+                                                $("<td>")
+                                                    .text(v.quantity),
+                                                $("<td>")
+                                                    .text(v.dateCreated),
+                                                $("<td>")
+                                                    .text(v.description),
+                                                $("<td>")
+                                                    .text('-'),
+                                            )
+                                    )
+                            })
+                        }
+                        resolve(true);
+                    })
+                     
+                })
+            }
+        },
+    }
+    used_product.init();
+})
