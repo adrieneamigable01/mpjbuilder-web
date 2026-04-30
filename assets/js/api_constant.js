@@ -1,11 +1,11 @@
-let isLocal = true;
+let isLocal = false;
 if(isLocal){
     var origin  = 'http://localhost/mikkostore_api';
     var baseApiUrl = `${origin}`;
     var base_url = 'http://localhost/mikkostore_admin';
     var baseUrl = `${base_url}/mikkostore_admin/pages/`
 }else{
-    var origin  = 'https://mikkostore-api.doitcebu.com';
+    var origin  = 'https://pos-api.doitcebu.com';
     var baseApiUrl = `${origin}`;
     var base_url = window.location.origin;
     var host = window.location.host;
