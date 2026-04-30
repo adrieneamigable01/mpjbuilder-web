@@ -175,6 +175,9 @@
                     <span style="color: var(--text-muted);">Don't have an account?</span> 
                     <a href="register.html">Sign up</a>
                 </div>
+                <div style="margin-top: 8px;">
+                    <span style="color: var(--text-muted);">v 0.0.1</span> 
+                </div>
             </div>
         </div>
     </div>
