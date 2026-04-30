@@ -16,7 +16,6 @@ $(()=>{
             }
             dashboard.ajax.checkToken().then((data)=>{
                 if(data){
-                    alert(data)
                     dashboard.ajax.getStores().then(()=>{
                         dashboard.ajax.getSuppliers();
                         dashboard.ajax.getInventory();
@@ -166,8 +165,9 @@ $(()=>{
                                 }
                             })  
                             $("#total-stores").text(count)
-                            resolve(true)
+                           
                         }
+                         resolve(true)
                     })
                      
                 })
