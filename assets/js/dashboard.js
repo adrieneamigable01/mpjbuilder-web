@@ -7,7 +7,7 @@ $(()=>{
     var activeTable = null;
     dashboard = {
         init:()=>{
-           
+            jsAddon.display.addfullPageLoader()
             let token = localStorage.getItem("token")
             if(token == null){
                 localStorage.removeItem('session');
@@ -23,8 +23,8 @@ $(()=>{
                         dashboard.ajax.getTransaction();
                         dashboard.ajax.getCustomerPayables()
                         dashboard.ajax.getTransactionByYear()
-                        jsAddon.display.removefullPageLoader();
                         dashboard.display.displayDashboardData();
+                        jsAddon.display.removefullPageLoader();
                     })
                     
                 }  
@@ -92,7 +92,6 @@ $(()=>{
                 })
             },
             getSuppliers:()=>{
-                jsAddon.display.addfullPageLoader()
                 return new Promise((resolve,reject)=>{
                     jsAddon.display.ajaxRequest({
                         type:'get',
@@ -107,7 +106,6 @@ $(()=>{
             },
             getStores:()=>{
                 return new Promise((resolve,reject)=>{
-                    jsAddon.display.addfullPageLoader()
                     jsAddon.display.ajaxRequest({
                         type:'get',
                         url:`${getStoresApi}`,
@@ -179,7 +177,6 @@ $(()=>{
                     payload.storeid = dashboard.display.getStoreId();
                 };
                 return new Promise((resolve,reject)=>{
-                    jsAddon.display.addfullPageLoader()
                     jsAddon.display.ajaxRequest({
                         type:'get',
                         url:`${getInventoryApi}`,
